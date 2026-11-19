@@ -1,0 +1,66 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+nav {
+  margin-bottom: 1rem;
+}
+
+nav a {
+  margin-right: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #ccc;
+  padding: 0.4rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+label {
+  display: block;
+  margin: 0.6rem 0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.4rem;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+}
+
+button.link {
+  background: none;
+  border: none;
+  color: #0645ad;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.erro {
+  background: #fdd;
+  padding: 0.6rem;
+}
+
+.acoes > * {
+  margin-right: 0.5rem;
+}
