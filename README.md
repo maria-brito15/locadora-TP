@@ -1,5 +1,3 @@
----
-
 # 🚗 Sistema Web de Aluguel de Automóveis 👨‍💻
 
 > [!NOTE]
@@ -14,8 +12,6 @@
     </td>
   </tr>
 </table>
-
----
 
 ## 🚧 Status do Projeto
 
@@ -431,12 +427,6 @@ Sem baixar o Chromium, use o Edge instalado no Windows: `PW_CHANNEL=msedge npm r
 | 👤 Nome | :octocat: GitHub | 📤 E-mail |
 |---------|-----------------|-----------|
 | Maria Eduarda de Paula Brito | [GitHub](https://github.com/maria-brito15) | [mariaeduardadepaulabrito@gmail.com](mailto:mariaeduardadepaulabrito@gmail.com) |
-
----
-
-## 🙏 Agradecimentos
-
-Ao professor e aos colegas da disciplina pelo feedback ao longo das sprints.
 
 ---
 
