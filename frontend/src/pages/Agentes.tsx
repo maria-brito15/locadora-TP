@@ -39,31 +39,35 @@ export default function Agentes() {
         <Link to="/agentes/novo">+ Novo agente</Link>
       </p>
       <Erro texto={erro} />
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>CNPJ</th>
-            <th>Endereço</th>
-            <th>Tipo</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {agentes.map((a) => (
-            <tr key={a._id}>
-              <td>{a.nome}</td>
-              <td>{a.cnpj}</td>
-              <td>{a.endereco}</td>
-              <td>{a.tipo}</td>
-              <td className="acoes">
-                <Link to={`/agentes/${a._id}/editar`}>Editar</Link>
-                <button onClick={() => excluir(a._id)}>Excluir</button>
-              </td>
+      <div className="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CNPJ</th>
+              <th>Endereço</th>
+              <th>Tipo</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {agentes.map((a) => (
+              <tr key={a._id}>
+                <td>{a.nome}</td>
+                <td>{a.cnpj}</td>
+                <td>{a.endereco}</td>
+                <td>{a.tipo}</td>
+                <td className="acoes">
+                  <Link to={`/agentes/${a._id}/editar`}>Editar</Link>
+                  <button className="perigo" onClick={() => excluir(a._id)}>
+                    Excluir
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

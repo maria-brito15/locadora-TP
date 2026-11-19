@@ -33,43 +33,47 @@ export default function Clientes() {
     <>
       <h2>Clientes</h2>
       <Erro texto={erro} />
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>RG</th>
-            <th>Endereço</th>
-            <th>Profissão</th>
-            <th>Vínculos / rendimentos</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {clientes.map((c) => (
-            <tr key={c._id}>
-              <td>{c.nome}</td>
-              <td>{c.cpf}</td>
-              <td>{c.rg}</td>
-              <td>{c.endereco}</td>
-              <td>{c.profissao}</td>
-              <td>
-                {c.empregos
-                  .map((e) => `${e.entidade} (R$ ${e.rendimento})`)
-                  .join("; ")}
-              </td>
-              <td className="acoes">
-                {user?.refId === c._id && (
-                  <>
-                    <Link to={`/clientes/${c._id}/editar`}>Editar</Link>
-                    <button onClick={() => excluir(c._id)}>Excluir</button>
-                  </>
-                )}
-              </td>
+      <div className="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>RG</th>
+              <th>Endereço</th>
+              <th>Profissão</th>
+              <th>Vínculos / rendimentos</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {clientes.map((c) => (
+              <tr key={c._id}>
+                <td>{c.nome}</td>
+                <td>{c.cpf}</td>
+                <td>{c.rg}</td>
+                <td>{c.endereco}</td>
+                <td>{c.profissao}</td>
+                <td>
+                  {c.empregos
+                    .map((e) => `${e.entidade} (R$ ${e.rendimento})`)
+                    .join("; ")}
+                </td>
+                <td className="acoes">
+                  {user?.refId === c._id && (
+                    <>
+                      <Link to={`/clientes/${c._id}/editar`}>Editar</Link>
+                      <button className="perigo" onClick={() => excluir(c._id)}>
+                        Excluir
+                      </button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

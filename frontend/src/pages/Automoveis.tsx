@@ -43,39 +43,43 @@ export default function Automoveis() {
         </p>
       )}
       <Erro texto={erro} />
-      <table>
-        <thead>
-          <tr>
-            <th>Marca</th>
-            <th>Modelo</th>
-            <th>Ano</th>
-            <th>Placa</th>
-            <th>Matrícula</th>
-            <th>Proprietário</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {autos.map((a) => (
-            <tr key={a._id}>
-              <td>{a.marca}</td>
-              <td>{a.modelo}</td>
-              <td>{a.ano}</td>
-              <td>{a.placa}</td>
-              <td>{a.matricula}</td>
-              <td>{a.proprietarioNome}</td>
-              <td className="acoes">
-                {agente && (
-                  <>
-                    <Link to={`/automoveis/${a._id}/editar`}>Editar</Link>
-                    <button onClick={() => excluir(a._id)}>Excluir</button>
-                  </>
-                )}
-              </td>
+      <div className="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Ano</th>
+              <th>Placa</th>
+              <th>Matrícula</th>
+              <th>Proprietário</th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {autos.map((a) => (
+              <tr key={a._id}>
+                <td>{a.marca}</td>
+                <td>{a.modelo}</td>
+                <td>{a.ano}</td>
+                <td>{a.placa}</td>
+                <td>{a.matricula}</td>
+                <td>{a.proprietarioNome}</td>
+                <td className="acoes">
+                  {agente && (
+                    <>
+                      <Link to={`/automoveis/${a._id}/editar`}>Editar</Link>
+                      <button className="perigo" onClick={() => excluir(a._id)}>
+                        Excluir
+                      </button>
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

@@ -58,79 +58,87 @@ export default function Pedidos() {
         </p>
       )}
       <Erro texto={erro} />
-      <table>
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Automóvel</th>
-            <th>Período</th>
-            <th>Criado em</th>
-            <th>Status</th>
-            <th>Avaliações / crédito</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pedidos.map((p) => (
-            <tr key={p._id}>
-              <td>{p.clienteNome}</td>
-              <td>{p.carro}</td>
-              <td>
-                {p.inicio} → {p.fim}
-              </td>
-              <td>{p.criadoEm.slice(0, 10)}</td>
-              <td>
-                <b>{p.status}</b>
-              </td>
-              <td>
-                {p.avaliacoes.map((a) => (
-                  <div key={a._id}>
-                    {a.agenteNome} — {a.parecer} ({a.data.slice(0, 10)}):{" "}
-                    {a.observacao}
-                  </div>
-                ))}
-                {p.contrato && (
-                  <div>
-                    Crédito: R$ {p.contrato.valor} em {p.contrato.prazo} meses (
-                    {p.contrato.situacao})
-                  </div>
-                )}
-              </td>
-              <td className="acoes">
-                {cliente ? (
-                  <>
-                    {p.status === "Em análise" && (
-                      <Link to={`/pedidos/${p._id}/editar`}>Editar</Link>
-                    )}
-                    {["Em análise", "Aprovado"].includes(p.status) && (
-                      <button
-                        onClick={() =>
-                          acao(`/pedidos/${p._id}/cancelar`, "Cancelar pedido?")
-                        }
-                      >
-                        Cancelar
-                      </button>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    {p.status === "Em análise" && (
-                      <Link to={`/pedidos/${p._id}/avaliar`}>Avaliar</Link>
-                    )}
-                    {p.status === "Aprovado" && (
-                      <button
-                        onClick={() => acao(`/pedidos/${p._id}/executar`)}
-                      >
-                        Iniciar contrato
-                      </button>
-                    )}
-                  </>
-                )}
-              </td>
+      <div className="tabela">
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th>
+              <th>Automóvel</th>
+              <th>Período</th>
+              <th>Criado em</th>
+              <th>Status</th>
+              <th>Avaliações / crédito</th>
+              <th>Ações</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {pedidos.map((p) => (
+              <tr key={p._id}>
+                <td>{p.clienteNome}</td>
+                <td>{p.carro}</td>
+                <td>
+                  {p.inicio} → {p.fim}
+                </td>
+                <td>{p.criadoEm.slice(0, 10)}</td>
+                <td>
+                  <b className="badge" data-status={p.status}>
+                    {p.status}
+                  </b>
+                </td>
+                <td>
+                  {p.avaliacoes.map((a) => (
+                    <div key={a._id}>
+                      {a.agenteNome} — {a.parecer} ({a.data.slice(0, 10)}):{" "}
+                      {a.observacao}
+                    </div>
+                  ))}
+                  {p.contrato && (
+                    <div>
+                      Crédito: R$ {p.contrato.valor} em {p.contrato.prazo} meses
+                      ({p.contrato.situacao})
+                    </div>
+                  )}
+                </td>
+                <td className="acoes">
+                  {cliente ? (
+                    <>
+                      {p.status === "Em análise" && (
+                        <Link to={`/pedidos/${p._id}/editar`}>Editar</Link>
+                      )}
+                      {["Em análise", "Aprovado"].includes(p.status) && (
+                        <button
+                          className="perigo"
+                          onClick={() =>
+                            acao(
+                              `/pedidos/${p._id}/cancelar`,
+                              "Cancelar pedido?",
+                            )
+                          }
+                        >
+                          Cancelar
+                        </button>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {p.status === "Em análise" && (
+                        <Link to={`/pedidos/${p._id}/avaliar`}>Avaliar</Link>
+                      )}
+                      {p.status === "Aprovado" && (
+                        <button
+                          onClick={() => acao(`/pedidos/${p._id}/executar`)}
+                        >
+                          Iniciar contrato
+                        </button>
+                      )}
+                    </>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 }

@@ -25,7 +25,7 @@ export function Formulario({
 }) {
   return (
     <form
-      style={{ maxWidth: 520 }}
+      className="form"
       onSubmit={(e) => {
         e.preventDefault();
         onSubmit();

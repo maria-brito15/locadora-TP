@@ -121,7 +121,7 @@ Nenhum status adicional foi criado além dos sugeridos no enunciado.
 * **Linguagem:** TypeScript 5.6
 * **Roteamento:** React Router 6
 * **Build Tool:** Vite 5
-* **Estilização:** CSS simples (`frontend/src/styles.css`)
+* **Estilização:** CSS próprio, minimalista e responsivo, com tema claro/escuro automático (`frontend/src/styles.css`)
 
 ### 🖥️ Back-end
 

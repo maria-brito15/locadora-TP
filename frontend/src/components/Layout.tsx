@@ -11,26 +11,33 @@ export default function Layout() {
   };
 
   return (
-    <div className="container">
-      <nav>
-        {user ? (
-          <>
-            <Link to="/pedidos">Pedidos</Link>
-            <Link to="/automoveis">Automóveis</Link>
-            <Link to="/clientes">Clientes</Link>
-            {user.perfil === "agente" && <Link to="/agentes">Agentes</Link>}
-            <button className="link" onClick={logout}>
-              Sair ({user.nome} · {user.perfil})
-            </button>
-          </>
-        ) : (
-          <>
-            <Link to="/login">Entrar</Link>
-            <Link to="/registro">Cadastrar-se (cliente)</Link>
-          </>
-        )}
-      </nav>
-      <Outlet />
-    </div>
+    <>
+      <header className="topo">
+        <div className="topo-in">
+          <span className="marca">Locadora</span>
+          <nav>
+            {user ? (
+              <>
+                <Link to="/pedidos">Pedidos</Link>
+                <Link to="/automoveis">Automóveis</Link>
+                <Link to="/clientes">Clientes</Link>
+                {user.perfil === "agente" && <Link to="/agentes">Agentes</Link>}
+                <button className="link" onClick={logout}>
+                  Sair ({user.nome} · {user.perfil})
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/login">Entrar</Link>
+                <Link to="/registro">Cadastrar-se (cliente)</Link>
+              </>
+            )}
+          </nav>
+        </div>
+      </header>
+      <main className="container">
+        <Outlet />
+      </main>
+    </>
   );
 }
